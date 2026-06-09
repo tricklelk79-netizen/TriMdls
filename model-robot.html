@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Робот-дрон | TrickleLK</title>
+    <style>
+      :root { 
+        --bg:#121212; 
+        --card:#1e1e1e; 
+        --text:#e0e0e0; 
+        --accent:#00bcd4; 
+        --border:#333; 
+        --code-bg: #1e1e1e;
+      }
+      body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin:0; padding:0; }
+      header { padding: 20px 20px 10px; border-bottom: 1px solid var(--border); }
+      a.back { color: #888; text-decoration: none; font-weight: 500; }
+      a.back:hover { color: var(--accent); }
+      main { max-width: 900px; margin: 30px auto; padding: 0 20px; }
+      h1 { margin: 0 0 8px; }
+      h2 { color: var(--accent); border-left: 4px solid var(--accent); padding-left: 10px; margin-top: 40px; }
+      .desc { color: #aaa; margin-bottom: 30px; line-height: 1.5; }
+      
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+      .feature-card {
+        background: var(--card);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+      }
+      .feature-title { font-weight: 600; color: #fff; margin-bottom: 5px; }
+      .feature-desc { font-size: 0.9rem; color: #aaa; }
+
+      .thumbs { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 30px; }
+      .thumb { width: 140px; height: 100px; object-fit: cover; border: 1px solid var(--border); border-radius: 6px; }
+      
+      .steps-list { list-style: none; padding: 0; }
+      .step-item { display: flex; align-items: flex-start; margin-bottom: 15px; }
+      .step-num { 
+        font-weight: bold; 
+        color: var(--accent); 
+        font-size: 1.5rem; 
+        margin-right: 15px; 
+        min-width: 30px;
+        flex-shrink: 0;
+      }
+      .step-text h3 { margin: 0 0 5px 0; color: #fff; }
+      .step-text p { margin: 0; color: #ccc; }
+
+      .code-block {
+        background: var(--code-bg);
+        padding: 15px;
+        border-radius: 8px;
+        font-family: 'Consolas', monospace;
+        overflow-x: auto;
+        border: 1px solid var(--border);
+        margin: 20px 0;
+      }
+      .code-line { color: #fff; display: block; }
+      .code-comment { color: #50c4ff; }
+      .code-keyword { color: #ff5f57; font-weight: bold; }
+      .code-string { color: #9ceaff; }
+
+      .errors-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+      .error-box {
+        background: #2a1e1e;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 3px solid #ff5f57;
+        font-size: 0.95rem;
+      }
+      .error-box h4 { margin: 0 0 5px 0; color: #fff; }
+      .error-box p { margin: 0; color: #ccc; }
+
+      .download-block { margin-top: 30px; }
+      .btn { 
+        display: inline-block; 
+        background: var(--accent); 
+        color: #000; 
+        padding: 14px 24px; 
+        border-radius: 6px; 
+        text-decoration: none; 
+        font-weight: 600; 
+        transition: 0.2s; 
+      }
+      .btn:hover { background: #0097a7; transform: translateY(-2px); }
+      
+      .meta { margin-top: 20px; font-size: 0.9rem; color: #777; }
+      .disclaimer {
+        margin-top: 40px;
+        padding: 20px;
+        background: #1a1a1a;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: #888;
+        font-size: 0.9rem;
+        text-align: center;
+      }
+      footer { text-align:center; padding: 40px 20px; color:#555; font-size:0.9rem; }
+
+      @media (max-width: 600px) {
+        .errors-grid { grid-template-columns: 1fr; }
+        .thumbs { justify-content: center; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="index.html" class="back">← Назад к галерее</a>
+    </header>
+    <main>
+      <h1>Робот-дрон</h1>
+      <p class="desc">
+        Готовый 3D-ассет для Unity (.fbx). Включает базовую риг-структуру и обновленный контроллер <code>DroneController.cs</code>. Скрипт управляет полетом (WASD), вращением корпуса мышью и камерой с ограничением угла обзора. Подходит для NPC/дронов. <br><br>
+        <strong>Главное преимущество:</strong> Не требует настройки в Blender. Иерархия объектов и точки вращения (Origin) уже настроены правильно.
+      </p>
+
+      <!-- Карточки содержимого -->
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-title">📦 Drone_Model.fbx</span>
+          <p class="feature-desc">Модель с готовой иерархией (Root -> Arms -> Props). Все оси вращения выставлены.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-title">⚙️ DroneController.cs</span>
+          <p class="feature-desc">Полный контроль полета: WASD, поворот корпуса, камера с ограничением взгляда.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-title">📝 ИНСТРУКЦИЯ.txt</span>
+          <p class="feature-desc">Пошаговая инструкция по установке и настройке.</p>
+        </div>
+      </div>
+
+      <!-- Превью с разных ракурсов -->
+      <div class="thumbs">
+        <!-- ЗАМЕНИ src НА ПУТИ К СВОИМ КАРТИНКАМ -->
+        <img src="assets/robot-front.jpg" alt="Вид спереди" class="thumb">
+        <img src="assets/robot-side.jpg" alt="Вид сбоку" class="thumb">
+        <img src="assets/robot-top.jpg" alt="Вид сверху" class="thumb">
+        <img src="assets/robot-detail.jpg" alt="Детали" class="thumb">
+      </div>
+
+      <!-- Блок шагов -->
+      <h2>🚀 3 шага, чтобы дрон полетел</h2>
+      <ol class="steps-list">
+        <li class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <h3>Импорт</h3>
+            <p>Перетащи файл <strong>Drone.fbx</strong> из архива в окно <strong>Project</strong> в Unity.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <h3>Сборка</h3>
+            <p>Перетащи объект <strong>DroneRoot</strong> из Project в окно <strong>Hierarchy</strong>. Ты увидишь готовую структуру: корпус, лучи, пропеллеры и камеру уже на своих местах.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <h3>Оживление</h3>
+            <p>
+              1. Повесь скрипт <strong>DroneController</strong> на объект <strong>DroneRoot</strong>.<br>
+              2. В поле <strong>Camera Transform</strong> перетащи объект <strong>MainCam</strong> (если не перетащить, скрипт сам попробует найти активную камеру).<br>
+              3. Нажми <strong>Play</strong>. Курсор автоматически скроется и зафиксируется в центре экрана.
+            </p>
+          </div>
+        </li>
+      </ol>
+
+      <!-- Разбор кода (под твой скрипт) -->
+      <h2>🧠 Разбор ключевых строк кода</h2>
+      <p style="color: #aaa;">Эти строки из <code>DroneController.cs</code> делают всю магию. Смотри, как просто это устроено:</p>
+      
+      <div class="code-block">
+        <span class="code-line"><span class="code-keyword">transform</span>.Translate(<span class="code-string">moveDirection</span> * <span class="code-string">moveSpeed</span> * <span class="code-string">Time.deltaTime</span>, <span class="code-string">Space.Self</span>);</span>
+        <br>
+        <span class="code-comment">// Двигаем дрон относительно его собственных осей. Если нос дрона повернут вправо,</span>
+        <span class="code-comment">// то нажатие W полетит именно «вперед» для дрона, а не строго по карте.</span>
+      </div>
+
+      <div class="code-block">
+        <span class="code-line"><span class="code-keyword">transform</span>.Rotate(<span class="code-string">Vector3.up</span>, <span class="code-string">turnInput</span> * <span class="code-string">rotationSpeed</span> * <span class="code-string">Time.deltaTime</span>);</span>
+        <br>
+        <span class="code-comment">// Поворот всего корпуса дрона вокруг вертикальной оси (ось мыши X).</span>
+      </div>
+
+      <div class="code-block">
+        <span class="code-line">yRotation = <span class="code-keyword">Mathf</span>.Clamp(yRotation, -80f, 80f);</span>
+        <br>
+        <span class="code-comment">// Ограничивает угол обзора камеры. Без этого игрок мог бы сделать «сальто» камерой</span>
+        <span class="code-comment">// и полностью потерять ориентацию в пространстве.</span>
+      </div>
+
+      <div class="code-block">
+        <span class="code-line"><span class="code-keyword">if</span> (<span class="code-string">cameraTransform</span> == <span class="code-keyword">null</span>) { ... <span class="code-keyword">FindObjectOfType</span>&lt;<span class="code-keyword">Camera</span>&gt;() ... }</span>
+        <br>
+        <span class="code-comment">// «Страховка» для новичка: если забыл перетащить камеру в поле скрипта,</span>
+        <span class="code-comment">// скрипт сам найдет главную камеру в сцене.</span>
+      </div>
+
+      <div class="code-block">
+        <span class="code-line">Cursor.lockState = CursorLockMode.Locked;</span>
+        <span class="code-line">Cursor.visible = <span class="code-keyword">false</span>;</span>
+        <br>
+        <span class="code-comment">// Скрывает курсор и фиксирует его в центре экрана при старте игры.</span>
+      </div>
+
+      <!-- Частые ошибки -->
+      <h2>⚠️ Чек-лист: если что-то не работает</h2>
+      <div class="errors-grid">
+        <div class="error-box">
+          <h4>Камера «вывернулась» или дрон крутится странно</h4>
+          <p>Проверь, что в скрипте поле <strong>Camera Transform</strong> либо заполнено объектом камеры, либо оставлено пустым (тогда сработает автопоиск). Если ты вручную повесил камеру на другой объект, убедись, что она является дочерней для DroneRoot.</p>
+        </div>
+        <div class="error-box">
+          <h4>Дрон летит боком или назад</h4>
+          <p>Это значит, что модель экспортирована с неверной осью Forward. В этом ассете оси настроены правильно (нос дрона смотрит по Z+). Если ты менял модель сам — проверь экспорт FBX.</p>
+        </div>
+        <div class="error-box">
+          <h4>Курсор не скрывается</h4>
+          <p>Убедись, что метод <code>Start()</code> вызывается. Если ты добавил свой собственный скрипт инициализации поверх этого, он может блокировать выполнение команд скрытия курсора.</p>
+        </div>
+        <div class="error-box">
+          <h4>Нет реакции на мышь</h4>
+          <p>Проверь настройки Input Manager в Unity (Edit > Project Settings > Input Manager). Должны быть оси "Mouse X" и "Mouse Y". В Legacy Input они есть по умолчанию.</p>
+        </div>
+      </div>
+
+      <!-- Кнопка скачивания -->
+      <div class="download-block">
+        <!-- ВСТАВЬ СЮДА ССЫЛКУ НА ЯНДЕКС.ДИСК -->
+        <a href="ССЫЛКА_НА_ЯНДЕКС_ДИСК" class="btn" target="_blank" rel="noopener noreferrer">Скачать (.fbx + DroneController.cs) — 644 Кб</a>
+      </div>
+
+      <div class="meta">
+        Формат: .fbx • Движок: Unity 2021–2023 • Система ввода: Legacy Input Manager
+      </div>
+
+      <div class="disclaimer">
+        ⚠️ <strong>Важно:</strong> Этот ассет — учебный пример. Он создан, чтобы ты понял механику работы иерархии, относительного движения (<code>Space.Self</code>) и ограничения углов камеры. Не предназначен для прямого использования в коммерческих AAA-проектах без доработки.
+      </div>
+    </main>
+    <footer>TrickleLK • Только ассеты</footer>
+  </body>
+</html>

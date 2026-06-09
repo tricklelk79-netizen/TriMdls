@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TrickleLK — ассеты для игр</title>
+    <style>
+      :root { 
+        --bg:#121212; 
+        --card:#1e1e1e; 
+        --text:#e0e0e0; 
+        --accent:#00bcd4;       /* Твой бирюзовый */
+        --neon:#00bcd4cc;       /* Полупрозрачный неон для свечения */
+        --border:#333; 
+        --hover-glow: 0 0 15px var(--neon); /* Эффект свечения */
+      }
+      body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin:0; padding:0; }
+      
+      header { text-align:center; padding: 60px 20px; }
+      h1 { margin:0 0 10px; letter-spacing: 3px; font-size: 2.5rem; text-shadow: 0 0 10px rgba(0, 188, 212, 0.2); }
+      .about { max-width: 700px; margin: 0 auto; line-height: 1.5; text-align: center; color: #aaa; }
+      
+      .gallery { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+        gap: 25px; /* Чуть больше отступы для дыхания */
+        padding: 30px 20px; 
+        max-width: 1000px; 
+        margin: 0 auto; 
+      }
+
+      .asset-card { 
+        background: var(--card); 
+        border: 1px solid var(--border); 
+        border-radius: 8px; 
+        overflow: hidden; 
+        transition: all 0.3s ease; 
+        cursor: pointer;
+        position: relative;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      }
+
+      /* Эффект при наведении на карточку */
+      .asset-card:hover { 
+        transform: translateY(-6px); 
+        border-color: var(--accent); 
+        box-shadow: var(--hover-glow); 
+      }
+
+      /* Затемнение картинки при наведении, чтобы текст читался лучше */
+      .preview-wrapper {
+        position: relative;
+        width:100%; 
+        height:160px; 
+      }
+      .preview { 
+        width:100%; 
+        height:100%; 
+        object-fit:cover; 
+        background:#252525; 
+        transition: transform 0.5s ease;
+      }
+      .asset-card:hover .preview {
+        transform: scale(1.05); /* Лёгкое приближение картинки */
+      }
+
+      .info { padding: 15px; }
+      
+      /* Тип ассета делаем чуть ярче */
+      .type { 
+        font-size:0.8rem; 
+        color:#888; 
+        text-transform: uppercase; 
+        letter-spacing:1px; 
+        display: inline-block;
+        margin-bottom: 5px;
+      }
+      /* Добавляем цвет для разных типов (можно менять под себя) */
+      .type.script { color: #ff9800; }       /* Оранжевый для скриптов */
+      .type.model { color: #00bcd4; }        /* Бирюзовый для моделей */
+      .type.sprite { color: #9c27b0; }       /* Фиолетовый для спрайтов */
+
+      .title { 
+        margin:8px 0 4px; 
+        font-weight:500; 
+        line-height: 1.3;
+      }
+      
+      footer { text-align:center; padding: 40px 20px; color:#555; font-size:0.9rem; border-top: 1px solid #222; margin-top: 20px;}
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>TrickleLK</h1>
+      <div class="about">
+        Я анонимный и скромный разработчик. Делюсь своими 3D‑ и 2D‑моделями, спрайтами и скриптами для Unity. Здесь будут .fbx‑ассеты и небольшие скрипты, которые частично оживляют объекты. Всё для тех, кому нужны готовые куски для игр.
+      </div>
+    </header>
+
+    <section class="gallery">
+      <!-- Карточка модели 1 -->
+      <a href="model-robot.html" class="asset-card">
+        <div class="preview-wrapper">
+          <!-- Если нет картинки, будет серый фон. Замени src на свою -->
+          <img src="assets/robot-detail.jpg" alt="Робот" class="preview">
+        </div>
+        <div class="info">
+          <!-- Добавил класс script для акцента -->
+          <div class="type script">🎮 3D .fbx + скрипт</div>
+          <div class="title">Робот-дрон</div>
+        </div>
+      </a>
+
+      <!-- Карточка модели 2 -->
+      <a href="model-tree.html" class="asset-card">
+        <div class="preview-wrapper">
+          <img src="assets/tree-detail.jpg" alt="Дерево" class="preview">
+        </div>
+        <div class="info">
+          <!-- Добавил класс model для акцента -->
+          <div class="type model">🌲 3D .fbx (Low Poly) (Rigged)</div>
+          <div class="title">Дерево</div>
+        </div>
+      </a>
+
+      <!-- Пример третьей карточки (можешь удалить, если пока нет) -->
+      <a href="#" class="asset-card" style="opacity: 0.6; pointer-events: none;">
+        <div class="preview-wrapper">
+          <div style="width:100%; height:100%; background:#2a2a2a; display:flex; align-items:center; justify-content:center; color:#444;">Скоро</div>
+        </div>
+        <div class="info">
+          <div class="type sprite">🕹️ 2D Спрайт</div>
+          <div class="title">Герой (Idle)</div>
+        </div>
+      </a>
+
+      <!-- Добавляй новые карточки по аналогии: меняй href, src, type, title -->
+    </section>
+
+    <footer>TrickleLK • Только ассеты</footer>
+  </body>
+</html>
